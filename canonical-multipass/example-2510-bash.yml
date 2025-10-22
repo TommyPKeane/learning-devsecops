@@ -1,41 +1,44 @@
+#cloud-config
+
 # cloud-init Config | Example Ubuntu 25.10 Instance for User with `bash`
+#
+# Note that the first line of the file should be: `#cloud-config`, otherwise you will
+# get an invalid "user-data" error with no other help.
 #
 # References:
 #   - https://cloudinit.readthedocs.io/en/latest/reference/examples.html
-bootcmd: []  # This is very similar to runcmd, but commands run very early in the boot process, only slightly after a 'boothook' would run.
-groups:
-    - test
+
+# bootcmd: []  # This is very similar to runcmd, but commands run very early in the boot process, only slightly after a 'boothook' would run.
+groups: [test, testuser]
 users:
-  - name: testuser
-    gecos: Test E. User
-    homedir: /home/testuser
-    sudo:
-      - "ALL=(ALL) NOPASSWD:ALL"
+  - name: "testuser"
+    gecos: "Test E. User"
+    homedir: "/home/testuser"
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     primary_group: testuser
-    groups:
-      - root
-      - test
+    groups: [root, test]
     lock_passwd: true       # Defaults to true. Lock the password to disable password login
     no_create_home: false   # When set to true, do not create home directory.
     no_user_group: false    # When set to true, do not create a group named after the user.
     no_log_init: false      # When set to true, do not initialize lastlog and faillog database.
-    ssh_authorized_keys:  []
+    # ssh_authorized_keys: []
     ssh_redirect_user: false
     system: false           # Create the user as a system user. This means no home directory.
-    snapuser: false         # Create a Snappy (Ubuntu-Core) user via the snap create-user command available on Ubuntu systems.
+    # snapuser: null         # Create a Snappy (Ubuntu-Core) user via the snap create-user command available on Ubuntu systems.
 ssh:
   emit_keys_to_console: false
 package_update: true
 package_upgrade: true
+package_reboot_if_required: true
 packages:
   - git
   - bash
   - gcc
   - readline
-run_cmd:
-    - "mkdir -p /home/testuser/.bashrc.d/"
+runcmd:
+  - "mkdir -p /home/testuser/.bashrc.d/"
 write_files:
-  - path: /home/testuser/.bashrc.d/git.bash
+  - path: "/home/testuser/.bashrc.d/git.bash"
     content: |
       # git Distributed Version Control System (DVCS)
       #
