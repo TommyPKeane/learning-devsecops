@@ -56,7 +56,13 @@ These sections cover some use-cases of Canonical's Multipass on macOS by creatin
 <a id="simple-ubuntu-image-with-bash-user-setup"></a>
 ### Simple Ubuntu Image with `bash` User Setup
 
+Run the following command:
 
+```bash
+multipass launch --cloud-init="./example-2510-bash.yml" 25.04
+```
+
+This uses the local `example-2510-bash.yml` file and generates a new Ubuntu 25.04 image runtime.
 
 <a id="references"></a>
 ## References
