@@ -27,7 +27,7 @@
 set -eu
 
 cloud_init_config_path=$1
-# cloud_init_env_path=${2:-""}
+# cloud_init_env_path=${2:-""}  # TODO (tommypkeane): Add functionality for Environment Variables
 
 DOCKER_IMAGE="cloud-init-validator"
 DOCKER_IMAGE_TAG="latest"
@@ -52,7 +52,7 @@ else
         --rm \
         --name "${DOCKER_CONTAINER_NAME}" \
         --log-driver="json-file" \
-        --volume ${config_mount_dir}:"${DOCKER_BIND_TARGET}":ro \
+        --mount type=bind,src="${config_mount_dir}",dst="${DOCKER_BIND_TARGET}",readonly \
         "${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}" \
         "${DOCKER_BIND_TARGET}/${cloud_init_config_name}"
 fi
