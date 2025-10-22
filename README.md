@@ -41,8 +41,10 @@ All of the top-level subdirectories are disjoint from another, so there's no rea
 - `.github/`
     - `workflows/`
     - `CONTRIBUTING`
-- `canonical-multipass/` -- Examples of using Canonical's Multipass (local or Cloud-based Ubuntu Instances)
-- `cloud-init-validator/` -- A Docker-based Validator for `cloud-init` mainly for macOS where `cloud-init` isn't available directly
+- `canonical-multipass/`
+    - _Examples of using Canonical's Multipass (local or Cloud-based Ubuntu Instances)._
+- `cloud-init-validator/`
+    - _A Docker-based Validator for `cloud-init` mainly for macOS where `cloud-init` isn't available directly._
 
 <a id="license-and-copyright"></a>
 ## License and Copyright
