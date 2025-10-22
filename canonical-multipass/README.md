@@ -19,9 +19,11 @@ From their own [documentation](https://documentation.ubuntu.com/multipass/latest
 - [Developer Setup on macOS](#developer-setup-on-macos)
 - [macOS Use Cases](#macos-use-cases)
     - [Simple Ubuntu Image with `bash` User Setup](#simple-ubuntu-image-with-bash-user-setup)
+- [License and Copyright](#license-and-copyright)
 - [References](#references)
 
 <!-- /MarkdownTOC -->
+
 
 <a id="developer-setup-on-macos"></a>
 ## Developer Setup on macOS
@@ -48,6 +50,9 @@ From their own [documentation](https://documentation.ubuntu.com/multipass/latest
     ```
 1. If you see the help message explaining all the arguments and subcommands, then you're done with the initial setup! 🎉
 
+For help validating your `cloud-init` configuration (YAML) files, you can look at the `cloud-init-validator/` sibling-directory this repository, where we've setup a Docker-based utiltity for macOS development and explained the alternative approaches for Windows and Linux.
+
+
 <a id="macos-use-cases"></a>
 ## macOS Use Cases
 
@@ -63,6 +68,11 @@ multipass launch --cloud-init="./example-2510-bash.yml" 25.04
 ```
 
 This uses the local `example-2510-bash.yml` file and generates a new Ubuntu 25.04 image runtime.
+
+<a id="license-and-copyright"></a>
+## License and Copyright
+
+See the `LICENSE` file in the parent directory.
 
 <a id="references"></a>
 ## References

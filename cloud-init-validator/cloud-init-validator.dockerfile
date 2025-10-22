@@ -8,4 +8,4 @@ RUN apt-get update \
 RUN mkdir -p ${HOME}/test_configs
 
 ENTRYPOINT ["cloud-init", "schema", "--annotate", "-c"]
-CMD ["validate-cloud-init.sh"]
+CMD ["example-cloud-init.yml"]
